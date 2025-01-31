@@ -1,2 +1,2 @@
 # MAGD
-MAGD-Programación
+MAGD-Programación juliana
