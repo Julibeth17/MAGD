@@ -1,0 +1,10 @@
+SELECT COUNT(*) FROM artists a; 
+SELECT a.Name FROM artists a INNER JOIN albums a2 ON a.ArtistId = a2.ArtistId WHERE a2.Title ="Voodoo Lounge";
+SELECT a2.Title FROM artists a INNER JOIN albums a2 ON a.ArtistId = a2.ArtistId WHERE a.Name ="Ozzy Osbourne";
+SELECT COUNT(t.Name) FROM tracks t INNER JOIN albums a ON a.AlbumId = t.AlbumId INNER JOIN artists a2 on a2.ArtistId= a.ArtistId  WHERE a2.Name ="Red Hot Chili Peppers";
+SELECT t.Name FROM tracks t ORDER BY t.Milliseconds DESC LIMIT 3;
+SELECT g.Name  FROM genres g INNER JOIN tracks t ON  t.GenreId = g.GenreId ORDER BY t.Bytes ASC LIMIT 1;
+SELECT g.Name, COUNT(t.TrackId) FROM genres g INNER JOIN tracks t ON  t.GenreId = g.GenreId ORDER by t.Name DESC LIMIT 1;
+SELECT a2.Name AS artista,  COUNT(t.TrackId) AS totalcanciones FROM artists a2 INNER JOIN albums a ON a2.ArtistId = a.ArtistId INNER JOIN tracks t ON  a.AlbumId=t.AlbumId GROUP by a2.ArtistId ORDER by totalcanciones DESC LIMIT 10;
+SELECT e.FirstName || ' ' || e.LastName AS Empleado,COUNT(i.InvoiceId) AS TotalInvoices FROM employees e INNER JOIN customers c ON e.EmployeeId = c.SupportRepId INNER JOIN invoices i ON c.CustomerId = i.CustomerId GROUP BY e.EmployeeId ORDER BY TotalInvoices DESC;
+SELECT t.Name AS cancion, COUNT(*) As numeroplay FROM playlist_track pt INNER JOIN tracks t ON pt.TrackId =t.TrackId GROUP BY t.Name ORDER by numeroplay DESC LIMIT 1;
